@@ -1,4 +1,5 @@
 {
 	"editor.scrollbar.vertical": "hidden",
-	"editor.lineNumbers": "relative"
+	"editor.lineNumbers": "relative",
+	"editor.fontSize": 13
 }
