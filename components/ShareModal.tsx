@@ -29,7 +29,7 @@ const ShareModal = ({ roomId, collaborators, creatorId, currentUserType }: Share
 	const [email, setEmail] = useState('');
 	const [userType, setUserType] = useState<UserType>('viewer');
 
-	const shareDocumentHandler = async (params:type) => {
+	const shareDocumentHandler = async () => {
 		setLoading(true);
 		
 		await updateDocumentAccess({
