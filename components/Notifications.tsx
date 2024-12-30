@@ -5,7 +5,7 @@ import {
 	PopoverContent,
 	PopoverTrigger
 } from "@/components/ui/popover";
-import { useInboxNotifications, useUnreadInboxNotificationsCount } from "@liveblocks/react";
+import { useInboxNotifications, useUnreadInboxNotificationsCount } from "@liveblocks/react/suspense";
 import { InboxNotification, InboxNotificationList, LiveblocksUIConfig } from "@liveblocks/react-ui";
 import Image from "next/image";
 import { ReactNode } from "react";
@@ -14,7 +14,7 @@ const Notifications = () => {
 	const { inboxNotifications } = useInboxNotifications();
 	const { count }  = useUnreadInboxNotificationsCount();
 
-	const unreadNotifications = inboxNotifications?.filter((notification) => !notification.readAt);
+	const unreadNotifications = inboxNotifications.filter((notification) => !notification.readAt);
 
 	return (
 		<Popover>
