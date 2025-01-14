@@ -12,11 +12,12 @@ export const getClerkUsers = async ({ userIds }: {userIds: string[]}) => {
 
 		const users = data.map((user) => ({
 			id: user.id,
-			name: `${user.firstName} ${user.lastName ? user.lastName : " "}`,
-			email: user.emailAddresses[0].emailAddress,
+            name: user.lastName !== null ? 
+                `${user.firstName} ${user.lastName}`: user.firstName,
+	    	email: user.emailAddresses[0].emailAddress,
 			avatar: user.imageUrl,
 		}));
-
+        
 		const sortedUsers = userIds.map((email) => users.find((user) => user.email === email));
 		return parseStringify(sortedUsers);
 	} catch (error) {
@@ -32,7 +33,9 @@ export const getDocumentUsers = async ({ roomId, currentUser, text }: { roomId: 
 		if(text.length) {
 			const lowerCaseText = text.toLowerCase();
 
-			const filteredUsers = users.filter((email: string) => email.toLowerCase().includes(lowerCaseText));
+			const filteredUsers = users.filter((email: string) =>
+                email.toLowerCase().includes(lowerCaseText)
+            );
 
 			return parseStringify(filteredUsers);
 		}

@@ -50,7 +50,9 @@ const Home = async () => {
 									</div>
 								</Link>
 
-								<DeleteModal roomId={id} />
+                                {metadata.email === clerkUser.emailAddresses[0].emailAddress && (
+								    <DeleteModal roomId={id} />
+                                )}
 							</li>
 						))}
 					</ul>
